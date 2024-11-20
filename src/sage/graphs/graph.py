@@ -7774,6 +7774,12 @@ class Graph(GenericGraph):
 
             sage: graphs.EmptyGraph().gomory_hu_tree()
             Graph on 0 vertices
+
+            sage: recursion_limit = sys.getrecursionlimit()
+            sage: G = graphs.PathGraph(Integer(recursion_limit))
+            sage: T = G.gomory_hu_tree(algorithm="FF")
+            sage: T.order() == recursion_limit
+            True
         """
         self._scream_if_not_simple()
 
